@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Scholarships</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="description" content="All the customer can apply the scholarships all over the world"/>
+    <meta name="robots" content="index, follow"/>
+    <link rel="canoncial" href="http://scholarship.com"/>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag Ckeditor.cdn_url%>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true  %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <%= javascript_include_tag "chosen", "data-turbolinks-track" => true  %>
+    <style>
+        .field-with-errors input {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Scholarships</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Post<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to :controller=> 'posts' do %>Post<% end %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to :controller=> 'categories' do %>Categories<% end %></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Scholarships<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><%= link_to :controller=> 'scholarships' do %>Scholarships<% end %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to :controller=> 'subjects' do %>Subjects<% end %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to :controller=> 'institutes' do %>Institutes<% end %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to :controller=> 'educations' do %>Educations<% end %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to :controller=> 'states' do %>Countries<% end %></li>
+                </ul>
+            </li>
+            <li><%= link_to :controller=> 'pages' do %>Pages<% end %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Log Out', logout_path %></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <%= yield %>
+</div>
+</body>
+</html>

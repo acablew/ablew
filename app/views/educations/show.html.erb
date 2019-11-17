@@ -1,0 +1,20 @@
+<div class="jumbotron">
+  <div class="row">
+    <h3><span>Education Level: &nbsp</span><span class="label label-warning"><%= @education.level %></span></h3>
+    <h3></h3>
+  </div>
+  <div style="float:right">
+    <%= link_to edit_education_path(@education) do %>
+      <div class="btn btn-primary">
+        <span class="glyphicon glyphicon-edit"></span> Edit
+      </div>
+    <% end %>
+  </div>
+  <div style="float:right; margin-right:10px">
+    <%= link_to @education, method: :delete, data: {confirm: "Are you sure?"}  do %>
+      <div class="btn btn-danger">
+        <span class="glyphicon glyphicon-remove"></span> Delete
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <%= link_to "posts", {:style => "text-decoration: none;"} do %>
+            <span>Posts </span> /
+        <% end %>
+        <span> Categories</span>
+    </div>
+    <div class="index-content">
+        <div class="row">
+            <%= link_to "categories/new" , {:style => "margin-left:14px"} do %>
+                <button class="btn btn-success">Create</button>
+            <% end %>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Categories List</div>
+                    <table class="table">
+                        <% i=0 %>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        <% @categories.each do |category| %>
+                            <% i=i+1 %>
+                            <tr>
+                                <td><%= i %></td>
+                                <td><%= category.name %></td>
+                                <td>
+                                    <%= link_to edit_category_path(category) do %>
+                                        <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                                    <% end %>
+                                    <%= link_to category, method: :delete, data: {confirm: "Are you sure?"}  do %>
+                                        <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+                                    <% end %>
+                                    <%#= link_to category do %>
+<!--                                        <button class="btn btn-primary btn-xs">View</button>-->
+                                    <%# end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <%= link_to "scholarships", {:style => "text-decoration: none;"} do %>
+            <span>Scholarships </span> /
+        <% end %>
+        <span> Subjects</span>
+    </div>
+    <div class="index-content">
+        <div class="row">
+            <%= link_to "subjects/new" , {:style => "margin-left:14px"} do %>
+                <button class="btn btn-success">Create</button>
+            <% end %>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Subjects List</div>
+                    <table class="table">
+                        <% i=0 %>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        <% @subjects.each do |subject| %>
+                            <% i=i+1 %>
+                            <tr>
+                                <td><%= i %></td>
+                                <td><%= subject.name %></td>
+                                <td>
+                                    <%#= link_to subject do %>
+                  <!--                    <button class="btn btn-primary btn-xs">View</button>-->
+                                    <%# end %>
+                                    <%= link_to edit_subject_path(subject) do %>
+                                        <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                                    <% end %>
+                                    <%= link_to subject, method: :delete, data: {confirm: "Are you sure?"}  do %>
+                                        <button class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-remove"></span> Delete</button>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

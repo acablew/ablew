@@ -1,0 +1,11 @@
+<%= form_for(@category) do |f| %>
+  <%= render 'shared/error_messages' %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name, placeholder: 'Type the category name', class: "form-control" %><br>
+  <%= f.submit "Save", :class => "btn btn-success" %>
+  <%= link_to :controller=>'categories',:action =>'index' do %>
+    <div class="btn btn-primary" style="float: right">
+      <span class="glyphicon glyphicon-menu-left"></span> Back
+    </div>
+  <% end %>
+<% end %>

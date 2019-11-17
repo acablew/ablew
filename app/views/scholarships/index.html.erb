@@ -1,0 +1,60 @@
+<div class="container">
+    <%= link_to "posts", {:style => "text-decoration: none;"} do %>
+        <span>Scholarships </span>
+    <% end %>
+    <div class="index-content">
+        <div class="row">
+            <%= link_to "scholarships/new" , "data-turbolinks" => false , :style => "margin-left:14px" do %>
+                <button class="btn btn-success">Create</button>
+            <% end %>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <% i=0 %>
+                    <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Education Level</th>
+                        <th>Institute</th>
+                        <th>Number of Positions</th>
+                        <th>Amount of scholarships</th>
+                        <th>Application Link</th>
+                        <th>Application Deadline</th>
+                        <th style="text-align: center">Action</th>
+                    </tr>
+                    <% @scholarships.each do |scholarship| %>
+                        <% i=i+1 %>
+                        <tr>
+                            <td><%= i %></td>
+                            <td><%= scholarship.title %></td>
+                            <td>
+                                <span>
+                                    <% scholarship.educations.each do |education| %>
+                                        <span class="label label-danger"><%= education.level %></span>
+                                    <% end %>
+                                </span>
+                            </td>
+                            <td><%= scholarship.institute.name %></td>
+                            <td><%= scholarship.number_position %></td>
+                            <td><%= scholarship.amount_scholarship %></td>
+                            <td><%= scholarship.application_link %></td>
+                            <td><%= scholarship.deadline %></td>
+                            <td style="width:200px">
+                                <%= link_to scholarship do %>
+                                    <button class="btn btn-primary btn-xs">View</button>
+                                <% end %>
+                                <%= link_to edit_scholarship_path(scholarship), "data-turbolinks" => false do %>
+                                    <button class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
+                                <% end %>
+                                <%= link_to scholarship, method: :delete, data: {confirm: "Are you sure?"}  do %>
+                                    <button class="btn btn-primary btn-xs">  <span class="glyphicon glyphicon-remove"></span> Delete</button>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

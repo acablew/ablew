@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="index-content">
+    <div class="row">
+      <%= link_to "pages/new", "data-turbolinks" => false  do %>
+        <button class="btn btn-success">Create</button>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <% @pages.each do |page| %>
+          <div class="col-lg-12">
+            <%= link_to page do %>
+              <div class="card">
+                <h4 style="padding-top: 20px"><%= page.title %></h4>
+                <button class="blue-button">Published</button>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</div>
+

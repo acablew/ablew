@@ -1,0 +1,10 @@
+<%= tinymce_assets %>
+<%= tinymce %>
+<%= form_for(@page) do |f| %>
+  <%= f.label :title %><br>
+  <%= f.text_field :title, placeholder: 'Type the title here', class: "form-control" %><br>
+  <%= f.label :content %><br>
+  <%= f.text_area :content, :class => 'tinymce', :rows => 15, :cols => 80 %>
+  <%= f.submit "Save", :class => "btn btn-success" %>
+<% end %>
+<%= tinymce %>

@@ -1,0 +1,20 @@
+<div class="jumbotron">
+    <div class="row">
+        <h3><span>Category Name: &nbsp</span><span class="label label-warning"><%= @category.name %></span></h3>
+        <h3></h3>
+    </div>
+    <div style="float:right">
+        <%= link_to edit_category_path(@category) do %>
+            <div class="btn btn-primary">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+            </div>
+        <% end %>
+    </div>
+    <div style="float:right; margin-right:10px">
+        <%= link_to @category, method: :delete, data: {confirm: "Are you sure?"}  do %>
+            <div class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove"></span> Delete
+            </div>
+        <% end %>
+    </div>
+</div>

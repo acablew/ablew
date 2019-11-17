@@ -1,0 +1,46 @@
+<div class="jumbotron">
+    <div class="row">
+  <!--    <h3><span>Country: &nbsp</span><span class="label label-warning"><%#= @scholarship.state.name %></span></h3>-->
+        <div>
+          <h4>Country
+          <% @scholarship.states.each do |state| %>
+              <span class="label label-success"><%= state.name %></span>
+          <% end %>
+          </h4>
+        </div>
+        <h4><span>Title: &nbsp</span><span class="label label-warning"><%= @scholarship.title %></span></h4>
+        <h4>Subject
+            <% @scholarship.subjects.each do |subject| %>
+                <span class="label label-success"><%= subject.name %></span>
+            <% end %>
+        </h4>
+        <h4>Education Level
+            <% @scholarship.educations.each do |education| %>
+                <span class="label label-success"><%= education.level %></span>
+            <% end %>
+        </h4>
+        <h4 style="margin-right: 10px"><span>Institute:&nbsp </span><span class="label label-warning"><%= @scholarship.institute.name %></span></h4>
+        <h4 style="margin-right: 10px"><span>Number of Positions: </span><span class="label label-default"><%= @scholarship.number_position %></span></h4>
+        <h4 style="margin-right: 10px"><span>amount of scholarship: </span><span class="label label-danger"><%= @scholarship.amount_scholarship %></span></h4>
+        <h4 style="margin-right: 10px"><span>Application Link: </span><span class="label label-success"><%= @scholarship.application_link %></span></h4>
+        <h4></h4>
+    </div>
+    <div style="margin-top: 20px">
+        <%= link_to edit_scholarship_path(@scholarship), "data-turbolinks" => false do %>
+            <div class="btn btn-primary">
+                <span class="glyphicon glyphicon-edit"></span> Edit
+            </div>
+        <% end %>
+        <%= link_to @scholarship, method: :delete, data: {confirm: "Are you sure?"}  do %>
+            <div class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove"></span> Delete
+            </div>
+        <% end %>
+        <%= link_to :controller=>'posts',:action =>'index' do %>
+            <span class="btn btn-primary" style="float: right">
+                <span class="glyphicon glyphicon-menu-left"></span> Back
+            </span>
+        <% end %>
+    </div>
+
+</div>

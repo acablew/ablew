@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <%= link_to "scholarships", {:style => "text-decoration: none;"} do %>
+            <span>Scholarships </span> /
+        <% end %>
+        <span> Countries</span>
+    </div>
+    <div class="index-content">
+        <div class="row">
+            <%= link_to "states/new" , {:style => "margin-left:14px"} do %>
+                <button class="btn btn-success">Create</button>
+            <% end %>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Countries List</div>
+                    <table class="table">
+                        <% i=0 %>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        <% @states.each do |state| %>
+                            <% i=i+1 %>
+                            <tr>
+                                <td><%= i %></td>
+                                <td><%= state.name %></td>
+                                <td>
+                                    <%= link_to edit_state_path(state) do %>
+                                        <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                                    <% end %>
+                                    <%= link_to state, method: :delete, data: {confirm: "Are you sure?"}  do %>
+                                        <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+                                    <% end %>
+                                    <%#= link_to state do %>
+<!--                                        <button class="btn btn-primary btn-xs">View</button>-->
+                                    <%# end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,2 @@
+module SingleScholarshipsHelper
+end

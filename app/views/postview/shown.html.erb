@@ -1,0 +1,9 @@
+<div class="jumbotron">
+  <div class="row">
+    <h3><span style="float: right; margin-bottom: 10px" class="label label-warning"><%= @post.country_name %></span></h3>
+    <h3 style="margin-right: 10px"><span style="float: right; margin-bottom: 10px; margin-right:10px" class="label label-success"><%= @post.category.name %></span></h3>
+  </div>
+
+  <h2><%= @post.title %></h2>
+  <p><%= @post.content.html_safe %></p>
+</div>

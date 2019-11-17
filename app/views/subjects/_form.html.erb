@@ -1,0 +1,11 @@
+<%= form_for(@subject) do |f| %>
+  <%= render 'shared/error_subject_messages' %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name, placeholder: 'Type the subject name', class: "form-control" %><br>
+  <%= f.submit "Save", :class => "btn btn-success" %>
+  <%= link_to :controller=>'subjects',:action =>'index' do %>
+    <div class="btn btn-primary" style="float:right">
+      <span class="glyphicon glyphicon-menu-left"></span> Back
+    </div>
+  <% end %>
+<% end %>

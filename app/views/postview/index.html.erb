@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+      <% if @category_id.blank? %>
+          <% if @country_id.blank? %>
+          <% else %>
+              <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @posts[0].state.name %>
+          <% end %>
+      <% else %>
+          <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @posts[0].category.name %>
+      <% end %>
+    </div>
+    <% @posts.each do |post| %>
+    <%= link_to :controller => "singleposts", :action => "index", :post => post.id do %>
+      <div class="row" style="color:blue;font-size: 20px;margin-top: 1%">
+          <%= post.title %>
+      </div>
+    <% end %>
+    <div class="row" style="font-size: 18px">
+        <%= post.content.html_safe %>
+    </div>
+    <% end %>
+</div>

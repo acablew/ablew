@@ -1,0 +1,46 @@
+<%= tinymce_assets %>
+<%= tinymce %>
+<script>
+    $(document).ready(function(){
+        $('.chosen-select').chosen({
+            allow_single_deselect: true,
+            no_results_text: 'No results matched',
+            width: '100%'
+        });
+    })
+</script>
+<%= form_for(@scholarship) do |f| %>
+  <%= render 'shared/error_messages1' %>
+  <%= f.hidden_field :title, { :value => @scholarship.title } %><br>
+  <%= f.hidden_field :deadline, {:value=> @scholarship.deadline} %><br>
+
+  <%= f.hidden_field :application_link, {:value=> @scholarship.application_link}%>
+  <%= f.hidden_field :number_position, {:value=> @scholarship.number_position}%>
+  <%= f.label :states %>
+  <%= f.select :state_ids,
+               State.all.map { |k| [k.name, k.id] },
+               { include_blank: true },
+               { :multiple => true, class: 'chosen-select'} %>
+  <%= f.label :Institute %><br>
+  <%= f.collection_select(:institute_id, Institute.where(state_id:@scholarship.state_ids), :id, :name, {prompt: 'Choose a Institute'}, {:class => "form-control" }) %><br>
+  <%= f.label :content %><br>
+  <%= f.text_area :content, :class => 'tinymce', :rows => 15, :cols => 80 , style:"margin-bottom:17px"%>
+  <%= f.label :subjects , style:"margin-top:17px"%>
+  <%= f.select :subject_ids,
+               Subject.all.map { |k| [k.name, k.id] },
+               { include_blank: true },
+               { :multiple => true, class: 'chosen-select' } %>
+  <%= f.label :educations, style:"margin-top:17px" %>
+  <%= f.select :education_ids,
+               Education.all.map { |k| [k.level, k.id] },
+               { include_blank: true },
+               { :multiple => true, class: 'chosen-select' } %>
+  <%= f.label :amount_scholarship, style:"margin-top:17px"%><br>
+  <%= f.text_field :amount_scholarship, placeholder: 'Type the Number of position', class: "form-control"  %>
+  <%= f.submit "Save", :class => "btn btn-success",:style => "margin-top: 17px" %>
+  <%= link_to :controller=>'posts',:action =>'index' do %>
+    <div class="btn btn-primary" style="float: right;margin-top:17px">
+      <span class="glyphicon glyphicon-menu-left"></span> Back
+    </div>
+  <% end %>
+<% end %>

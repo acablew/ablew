@@ -1,0 +1,41 @@
+
+<div class="container">
+  <%= link_to "posts", {:style => "text-decoration: none;"} do %>
+    <span>Posts </span> /
+  <% end %>
+  <span> Tags</span>
+  <div class="index-content">
+    <div class="row">
+      <%= link_to "keywords/new" , {:style => "margin-left:14px"} do %>
+        <button class="btn btn-success">Create</button>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">Tags List</div>
+          <table class="table">
+            <% i=0 %>
+            <tr>
+              <th>No</th>
+              <th>Label</th>
+              <th>Action</th>
+            </tr>
+            <% @keywords.each do |keyword| %>
+              <% i=i+1 %>
+              <tr>
+                <td><%= i %></td>
+                <td><%= keyword.label %></td>
+                <td>
+                  <%= link_to keyword do %>
+                    <button class="btn btn-primary btn-xs">View</button>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

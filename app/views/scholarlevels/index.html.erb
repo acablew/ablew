@@ -1,0 +1,33 @@
+<div class="container" style="padding-bottom: 2%; font-size: 17px">
+  <div class="row">
+    <div class="col-md-11 col-sm-10">
+      <div class="row">
+        <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @level.level %>
+      </div>
+      <div class="row" style="font-size: 20px;margin-top: 20px;color:blue">
+        <span style="font-size: 20px"><%= @scholarship_level.count%></span> Scholarships
+      </div>
+      <div class="row" style="margin-top: 25px">
+        <% @scholarship_level.each do |scholarship| %>
+          <div>
+            <%= link_to :controller => "singlescholarships", :action => "index", :id => scholarship.id do %>
+              <div style="color:blue"><%=   scholarship.title %></div>
+            <% end %>
+            <div style="margin-bottom:15px">
+              <div>
+                <span style="color:green">
+                    <% name = scholarship.institute.name.sub( " ", "-" ) %>
+                    <% name = "Scholarships-at-"+name %>
+                    <%= link_to :controller => "institute_view", :action => "index", :institute_id => name do %>
+                    <%= scholarship.institute.name %>
+                    <% end %>
+                </span>
+              </div>
+              <div>Description Description Description DescriptionDescription Description Description Description Description Description Description Description</div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

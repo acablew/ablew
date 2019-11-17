@@ -1,0 +1,39 @@
+<%= tinymce_assets %>
+<%= tinymce %>
+<script>
+    $(document).ready(function(){
+        $('.chosen-select').chosen({
+            allow_single_deselect: true,
+            no_results_text: 'No results matched',
+            width: '100%'
+        });
+    })
+</script>
+<%= form_for(@scholarship) do |f| %>
+    <%= render 'shared/error_messages1' %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, placeholder: 'Type the title here', class: "form-control" %><br>
+    <%= f.label :deadline %><br>
+    <%= f.text_field :deadline, placeholder: 'Type the Application deadline here', class: "form-control" %><br>
+    <%= f.label :application_link %><br>
+    <%= f.text_field :application_link, placeholder: 'Type the Application link here', class: "form-control" %><br>
+    <%= f.label :number_position%><br>
+    <%= f.number_field :number_position,placeholder: 'Type the Institute', class: "form-control", style:"margin-bottom:17px" %>
+    <%= f.label :states %>
+    <%= f.select :state_ids,
+                 State.all.map { |k| [k.name, k.id] },
+                 { include_blank: true },
+                 { :multiple => true, class: 'chosen-select'} %>
+
+    <%= f.submit "Next", :class => "btn btn-success" , :style => "margin-top: 17px" %>
+    <%= link_to :controller=>'posts',:action =>'index', :style => "margin-top: 17px"  do %>
+      <div class="btn btn-primary" style="float: right; margin-top:17px">
+        <span class="glyphicon glyphicon-menu-left"></span> Back
+      </div>
+    <% end %>
+<% end %>
+<script>
+    $(document).ready(function(){
+        alert("this is the story");
+    })
+</script>

@@ -1,0 +1,10 @@
+<% if @scholarship.errors.any? %>
+  <div class="alert alert-danger">
+    <p><%= pluralize(@scholarship.errors.count, "error") %>prevented if from being saved.</p>
+    <ul>
+      <% @scholarship.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

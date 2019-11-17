@@ -1,0 +1,8 @@
+toolbar:
+  - styleselect | bold italic fonts underline textcolor | undo redo | table | media ,alignleft, aligncenter alignright bullist numlist | outdent indent
+  - image | link
+plugins:
+  - image
+  - link
+  - table
+  - media

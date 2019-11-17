@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Scholarships</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true  %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default" style="background-color:black !important" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#" style="color:white">Scholarships</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-inverse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+      <li style="color:white"><%= link_to :controller=> 'home' do %><span style="color:white">Home</span><% end %></li>
+      <li style="color:white"><%= link_to :controller=> 'scholarview' do %><span style="color:white">Scholarships</span><% end %></li>
+      <li style="color:white"><%= link_to :controller=> 'postview' do %><span style="color:white">Blog</span><% end %></li>
+      <li style="color:white"><%= link_to :controller=> 'postview' do %><span style="color:white">Submit Scholarship</span><% end %></li>
+
+      <% Page.all.each do |page| %>
+        <li><%= link_to :controller=> 'pageview', :action => 'shown',:page => page.id  do %><%= page.title %><% end %></li>
+      <% end %>
+      <li><%= link_to 'LogIn', login_path %></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+<div class="container">
+  <%= yield %>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+</body>
+</html>

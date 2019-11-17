@@ -1,0 +1,37 @@
+<div class="container" style="padding-bottom: 2%">
+  <div class="row">
+    <%= link_to :controller=> 'home' do %>Home <% end %> <%= link_to :controller=>'postview',:action =>'index', :category =>@post.category.id do %> > <%= @post.category.name %> <% end %> > <%= @post.title %>
+  </div>
+  <div class="row" style="color:blue;font-size: 20px;margin-top: 3%">
+    <%= @post.title %>
+  </div>
+  <div class="row" style="margin-top: 3%; font-size: 18px">
+    <%= @post.content.html_safe %>
+  </div>
+  <div class="row" style="padding-top: 2%">
+    <%= link_to :controller=>'postview',:action =>'index', :category =>@post.category.id do %>
+        <span style="background-color: blue; color:white; padding:5px"><%= @post.category.name %></span>
+    <% end %>
+    <%#= link_to :controller => "postview", :action => "index", :category =>category do %>
+    <!--              <div style="padding:10px"><%#= category.name %></div>-->
+    <%# end  %>
+    <%= link_to :controller=>'postview',:action =>'index', :country =>@post.country do %>
+      <span style="background-color: green; color:white; padding:5px"><%= @post.country_name %></span>
+    <% end %>
+  </div>
+  <div class="row" style=" margin-top: 5%;">
+    <% @similar_posts.each do |post| %>
+      <% if(post.id === @post.id) %>
+      <% else %>
+      <div style="font-size: 18px;color:blue;">
+        <%= link_to :controller => "singleposts", :action => "index", :post => post.id do %>
+          <span style="color:blue"><%= post.title %></span>
+        <% end %>
+      </div>
+      <div>
+        <%= post.content.html_safe %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

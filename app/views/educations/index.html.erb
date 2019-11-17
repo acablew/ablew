@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <%= link_to "scholarships", {:style => "text-decoration: none;"} do %>
+            <span>Scholarships </span> /
+        <% end %>
+        <span> Educations</span>
+    </div>
+    <div class="index-content">
+        <div class="row">
+            <%= link_to "educations/new" , {:style => "margin-left:14px"} do %>
+                <button class="btn btn-success">Create</button>
+            <% end %>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Educations Level List</div>
+                    <table class="table">
+                        <% i=0 %>
+                        <tr>
+                            <th>No</th>
+                            <th>Level</th>
+                            <th>Action</th>
+                        </tr>
+                        <% @educations.each do |education| %>
+                            <% i=i+1 %>
+                            <tr>
+                                <td><%= i %></td>
+                                <td><%= education.level %></td>
+                                <td>
+                                    <%= link_to edit_education_path(education) do %>
+                                      <button class="btn btn-primary btn-xs"> <span class="glyphicon glyphicon-edit"></span> Edit</button>
+                                    <% end %>
+                                    <%= link_to education, method: :delete, data: {confirm: "Are you sure?"}  do %>
+                                      <button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</button>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

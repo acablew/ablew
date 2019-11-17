@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  country: MyString
+  subject: MyString
+  education_level: 1
+  institute: MyString
+  number_position: 1
+  amount_scholarship: 1.5
+  application_link: MyString
+
+two:
+  country: MyString
+  subject: MyString
+  education_level: 1
+  institute: MyString
+  number_position: 1
+  amount_scholarship: 1.5
+  application_link: MyString

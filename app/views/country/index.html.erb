@@ -1,0 +1,71 @@
+<div class="container" style="padding-bottom: 2%; font-size: 17px">
+    <div class="row">
+        <div class="col-md-11 col-sm-10">
+            <div class="row">
+                <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @country %>
+            </div>
+            <div class="row" style="font-size: 20px;margin-top: 20px;color:blue">
+                <span style="font-size: 20px"><%= @real_scholarships.count%></span> Scholarships Australia
+            </div>
+            <div class="row" style="margin-top: 25px">
+            <% @real_scholarships.each do |scholarship| %>
+                <div>
+                    <%= link_to :controller => "singlescholarships", :action => "index", :id => scholarship.id do %>
+                        <div style="color:blue"><%=   scholarship.title %></div>
+                    <% end %>
+                    <div style="margin-bottom:15px">
+                        <div>
+                            <span style="color:green">
+                                <% name = scholarship.institute.name.gsub(" ", "-" ) %>
+                                <% name = "Scholarships-at-"+name %>
+                                <%= link_to :controller => "institute_view", :action => "index", :institute_id => name do %>
+                                <%= scholarship.institute.name %>
+                                <% end %>
+                            </span>
+                            <div>
+                              <% scholarship.states.each do |state| %>
+                                <% name = state.name.sub( " ", "-" ) %>
+                                <% name = "Scholarships-in-"+name %>
+                                <%= link_to :controller => "country", :action => "index", :country => name do %>
+                                  <span class="label label-success"><%= state.name %></span>
+                                <% end %>
+                              <% end %>
+                            </div>
+                        </div>
+                        <div>Description Description Description DescriptionDescription Description Description Description Description Description Description Description</div>
+                    </div>
+                </div>
+            <% end %>
+            <%#= will_paginate(@real_scholarships, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+        </div>
+    </div>
+    <div class="col-md-1 col-sm-2">
+        <div class="row">
+            <div style="font-weight:700">Subjects</div>
+            <% @subjects.each do |subject| %>
+                <% name = subject.name.sub( " ", "-" ) %>
+                <% name = name+"-scholarships" %>
+                <%= link_to :controller => "singlesubjects", :action => "index", :subject => name do %>
+                <div style="color:blue"><%= subject.name %></div>
+            <% end %>
+        <% end %>
+        </div>
+        <div class="row" style="margin-top: 30px">
+            <div style="font-weight:700">Education Level</div>
+            <% @educations.each do |education| %>
+            <%= link_to :controller => "scholarlevels", :action => "index", :level_id => education.id do %>
+                <div style="color:blue"><%= education.level %></div>
+            <% end %>
+            <% end %>
+        </div>
+        <div class="row" style="margin-top: 30px">
+            <div style="font-weight:700">Application date</div>
+            <%= link_to :controller => "deadline", :action => "index", :type => 1 do %>
+                <div style="color:blue">This week</div>
+            <% end %>
+            <div style="color:blue">This month</div>
+            <div style="color:blue"> This appliection</div>
+        </div>
+    </div>
+</div>
+</div>

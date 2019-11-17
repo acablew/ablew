@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1><%= @page.title %></h1>
+  <p><%= @page.content.html_safe %></p>
+  <%= link_to edit_page_path(@page), "data-turbolinks" => false do %>
+    <div class="btn btn-primary">
+      <span class="glyphicon glyphicon-edit"></span> Edit
+    </div>
+  <% end %>
+  <%= link_to @page, method: :delete, data: {confirm: "Are you sure?"}  do %>
+    <div class="btn btn-danger">
+      <span class="glyphicon glyphicon-remove"></span> Delete
+    </div>
+  <% end %>
+</div>
