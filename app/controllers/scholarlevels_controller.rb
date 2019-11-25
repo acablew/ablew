@@ -3,8 +3,15 @@ class ScholarlevelsController < ApplicationController
     def index
         @posts = Post.all
         @scholarships = Scholarship.all
-        @level_id = params[:level_id]
-        @level = Education.find(@level_id);
+
+        if params[:level_id].to_s.split('-').count > 1
+            params[:level_id] = params[:level_id].gsub("-", " ")
+        end
+
+
+        # @level_id = params[:level_id]
+        @level_id = Education.where(level:params[:level_id]).first.id
+        @level = Education.find(@level_id)
         @scholarship_level = Array.new
         i=0
         for scholarship in @scholarships

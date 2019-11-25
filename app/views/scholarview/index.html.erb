@@ -22,7 +22,8 @@
 <div class="container">
     <div class="row">
       <% @scholarships.each do |scholarship| %>
-          <%= link_to :controller => "singlescholarships", :action => "index", :id => scholarship.id do %>
+          <% name = scholarship.title.sub( " ", "-" ) %>
+          <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
           <div class="row" style="color:blue;font-size: 20px;margin-top: 1%">
               <%= scholarship.title %>
           </div>

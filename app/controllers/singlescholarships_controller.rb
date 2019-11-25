@@ -3,7 +3,11 @@ class SinglescholarshipsController < ApplicationController
     def index
         @posts = Post.all
         # @country = Subject.find(params[:country])
-        @scholarship = Scholarship.find(params[:id])
+        if params[:id].to_s.split('-').count > 1
+            params[:id] = params[:id].gsub("-", " ")
+        end
+        
+        @scholarship = Scholarship.where(title: params[:id]).first
         @subjects = Subject.all
         @scholorships = Scholarship.all
         # @real_scholorships = Scholarship.where(state_id: @scholarship.state.id).paginate(page: params[:page], per_page:4)

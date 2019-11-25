@@ -14,11 +14,12 @@
             <div class="row" style="margin-top: 25px">
               <% @scholarships.each do |scholarship| %>
                 <div style="margin-bottom:20px">
-                  <%= link_to :controller => "singlescholarships", :action => "index", :id => scholarship.id do %>
+                  <% name = scholarship.title.gsub( " ", "-" ) %>
+                  <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
                       <div style="color:blue"><%= scholarship.title %></div>
                   <% end %>
                   <div>
-                      <% name = scholarship.institute.name.sub( " ", "-" ) %>
+                      <% name = scholarship.institute.name.gsub( " ", "-" ) %>
                       <% name = "Scholarships-at-"+name %>
                       <%= link_to :controller => "institute_view", :action => "index", :institute_id => name do %>
                         <%= scholarship.institute.name %>
@@ -26,7 +27,7 @@
                   </div>
                   <div>
                     <% scholarship.states.each do |state| %>
-                      <% name = state.name.sub( " ", "-" ) %>
+                      <% name = state.name.gsub( " ", "-" ) %>
                       <% name = "Scholarships-in-"+name %>
                       <%= link_to :controller => "country", :action => "index", :country =>   name do %>
                       <span class="label label-success"><%= state.name %></span>
@@ -43,7 +44,7 @@
         <div class="row">
           <div style="font-weight:700">Subjects</div>
           <% @subjects.each do |subject| %>
-            <% name = subject.name.sub( " ", "-" ) %>
+            <% name = subject.name.gsub( " ", "-" ) %>
             <% name = name+"-scholarships" %>
             <%= link_to :controller => "singlesubjects", :action => "index", :subject => name do %>
               <div style="color:blue"><%= subject.name %></div>
@@ -53,7 +54,8 @@
         <div class="row" style="margin-top: 30px">
           <div style="font-weight:700">Study Levels</div>
           <% @educations.each do |education| %>
-            <%= link_to :controller => "scholarlevels", :action => "index", :level_id => education.id do %>
+            <% name = education.level.gsub( " ", "-" ) %>
+            <%= link_to :controller => "scholarlevels", :action => "index", :level_id => name do %>
               <div style="color:blue"><%= education.level %></div>
             <% end %>
           <% end %>

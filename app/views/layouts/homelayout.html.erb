@@ -80,8 +80,9 @@
         <div class="col-md-4 col-xs-6">
           <div class="row" style="font-width: 700;font-size: 20px; padding-bottom: 10px">Blog</div>
           <% @posts.each do |post| %>
+            <% name = post.title.gsub( " ", "-" ) %>
             <div class="row">
-              <%= link_to :controller => "singleposts", :action => "index", :post => post.id do %>
+              <%= link_to :controller => "singleposts", :action => "index", :post => name do %>
                 <%= post.title %>
               <% end %>
             </div>

@@ -5,7 +5,9 @@
                 <%= @scholarship.title%>
             </div>
             <div class="row">
-                <%= link_to :controller => "institute_view", :action => "index", :institute_id => @scholarship.institute_id do %>
+                <% name = @scholarship.institute.name.gsub(" ", "-" ) %>
+                <% name = "Scholarships-at-"+name %>
+                <%= link_to :controller => "institute_view", :action => "index", :institute_id => name do %>
                     <span style="color:green"><%= @scholarship.institute.name %></span>
                 <% end %>
             </div>
@@ -34,7 +36,8 @@
             <div class="row">
                 <span>Education Level:</span>
                 <% @scholarship.educations.each do |education| %>
-                    <%= link_to :controller => "scholarlevels", :action => "index", :level_id => education.id do %>
+                    <% name = education.level.gsub( " ", "-" ) %>
+                    <%= link_to :controller => "scholarlevels", :action => "index", :level_id => name do %>
                         <span class="label label-primary"><%= education.level %></span>
                     <% end %>
                 <% end %>
@@ -76,19 +79,22 @@
             <div style="background-color: #E0E0E0; padding:10px" class="row">
                 <div style="font-weight:700; color:blue">Similar scholarships in Same institute</div>
                 <% @institute_scholorships.each do |scholarship| %>
-                    <%= link_to :controller => "singlescholarships", :action => "index", :id => scholarship.id do %>
+                    <% name = scholarship.title.gsub( " ", "-" ) %>
+                    <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
                         <div><%= scholarship.title %></div>
                     <% end %>
                 <% end %>
                 <div style="font-weight:700;padding-top: 12%; height: 30%; color:blue">Similar scholarships in Same education level</div>
                 <% @education_scholarships.each do |scholarship| %>
-                    <%= link_to :controller => "singlescholarships", :action => "index", :id => scholarship.id do %>
+                    <% name = scholarship.title.gsub( " ", "-" ) %>
+                    <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
                         <div><%= scholarship.title %></div>
                     <% end %>
                 <% end %>
                 <div style="font-weight:700; padding-top:12%; height:30%; color:blue">Similar scholarships in Same Subject</div>
                 <% @subject_scholarships.each do |scholarship| %>
-                    <%= link_to :controller => "singlescholarships", :action => "index", :id => scholarship.id do %>
+                    <% name = scholarship.title.gsub( " ", "-" ) %>
+                    <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
                         <div><%= scholarship.title %></div>
                     <% end %>
                 <% end %>

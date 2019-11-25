@@ -3,14 +3,15 @@
       <% if @category_id.blank? %>
           <% if @country_id.blank? %>
           <% else %>
-              <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @posts[0].state.name %>
+              <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @posts[0].country_name %>
           <% end %>
       <% else %>
           <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @posts[0].category.name %>
       <% end %>
     </div>
     <% @posts.each do |post| %>
-    <%= link_to :controller => "singleposts", :action => "index", :post => post.id do %>
+    <% name = post.title.gsub( " ", "-" ) %>
+    <%= link_to :controller => "singleposts", :action => "index", :post => name do %>
       <div class="row" style="color:blue;font-size: 20px;margin-top: 1%">
           <%= post.title %>
       </div>

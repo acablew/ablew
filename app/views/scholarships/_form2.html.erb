@@ -24,7 +24,7 @@
   <%= f.label :Institute %><br>
   <%= f.collection_select(:institute_id, Institute.where(state_id:@scholarship.state_ids), :id, :name, {prompt: 'Choose a Institute'}, {:class => "form-control" }) %><br>
   <%= f.label :content %><br>
-  <%= f.text_area :content, :class => 'tinymce', :rows => 15, :cols => 80 , style:"margin-bottom:17px"%>
+  <%= f.cktext_area :content%>
   <%= f.label :subjects , style:"margin-top:17px"%>
   <%= f.select :subject_ids,
                Subject.all.map { |k| [k.name, k.id] },
