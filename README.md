@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+## Import data
+rake db:seed
+
+## Update Sitemap
+rails sitemap:refresh
+
+## Update crontab
+whenever --update-crontab
