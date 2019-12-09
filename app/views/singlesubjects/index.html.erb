@@ -8,7 +8,7 @@
               <% if @scholarships.count ===0 %>
               <span style="font-size: 20px">No</span> Scholarships <%= @subject.name %>
               <% else %>
-              <span style="font-size: 20px"><%= @scholarships.count %></span> Scholarships <%= @subject.name %>
+              <h1><%= @scholarships.count %> <%= @subject.name %> Scholarships</h1>
               <% end %>
             </div>
             <div class="row" style="margin-top: 25px">
@@ -16,7 +16,7 @@
                 <div style="margin-bottom:20px">
                   <% name = scholarship.title.gsub( " ", "-" ) %>
                   <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
-                      <div style="color:blue"><%= scholarship.title %></div>
+                      <h2><%= scholarship.title %></h2>
                   <% end %>
                   <div>
                       <% name = scholarship.institute.name.gsub( " ", "-" ) %>
@@ -34,8 +34,7 @@
                       <% end %>
                     <% end %>
                   </div>
-                  <div>Description Description Description DescriptionDescription Description Description Description Description Description Description Description</div>
-                </div>
+                                 </div>
               <% end %>
               <%#= will_paginate(@scholarships, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
           </div>

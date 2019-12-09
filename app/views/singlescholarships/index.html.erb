@@ -1,9 +1,7 @@
 <div class="container" style="padding-bottom: 2%; font-size: 17px">
     <div class="row">
         <div class="col-md-9 col-sm-10">
-            <div class="row" style="font-size: 20px;margin-top: 20px;color:blue">
-                <%= @scholarship.title%>
-            </div>
+            <h1><%= @scholarship.title%></h1>
             <div class="row">
                 <% name = @scholarship.institute.name.gsub(" ", "-" ) %>
                 <% name = "Scholarships-at-"+name %>
@@ -20,6 +18,19 @@
                     <% end %>
                 <% end %>
             </div>
+<div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Idea Sch Links -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2191799726154649"
+     data-ad-slot="9320708051"
+     data-ad-format="link"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
             <div class="row" style="margin-top: 10px">
                 <%= @scholarship.content.html_safe %>
             </div>
@@ -48,50 +59,58 @@
                     <span>Application deadline:</span> <span><%= @scholarship.deadline %></span>
                 </div>
                 <div>
-                  <span>apply using this link to get </span> <span><%= @scholarship.amount_scholarship %></span>
+                  <span>Using this link to get </span> <span><%= @scholarship.amount_scholarship %>  <%= @scholarship.title%></span>
                 </div>
             </div>
             <div class="row" style="margin-top:10px;margin-bottom:10px">
-                <a href="<%= @scholarship.application_link %>" class="btn btn-primary">Apply online</a>
+                <a href="<%= @scholarship.application_link %>" class="btn btn-primary" target="_blank" rel="nofollow">Apply online</a>
             </div>
-
-            <% @real_scholarships.each do |scholarship| %>
-            <div class="row">
-                <div>
+<div style="margin:10px">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Ablew post top -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2191799726154649"
+     data-ad-slot="3731705655"
+     data-ad-format="auto"
+     data-full-width-responsive="false"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<h3>Related Postions</h3>
+<% @real_scholarships.each do |scholarship| %>
+  <div class="row">
+        <div style="padding:5px 0px;border-bottom:1px dotted #ddd;">
                     <%= scholarship.title %>
-                </div>
-                <div>
-                    <% scholarship.states.each do |state| %>
-                        <% name = state.name.sub( " ", "-" ) %>
-                        <% name = "Scholarships-in-"+name %>
-                        <%= link_to :controller => "country", :action => "index", :country => name do %>
-                            <span class="label label-success"><%= state.name %></span>
-                        <% end %>
-                    <% end %>
-                </div>
-                <div>
-                    <%= scholarship.content.html_safe %>
-                </div>
-            </div>
+ </div>
+
+</div>
             <% end %>
         </div>
         <div class="col-md-3 col-sm-2" >
-            <div style="background-color: #E0E0E0; padding:10px" class="row">
-                <div style="font-weight:700; color:blue">Similar scholarships in Same institute</div>
+            <div style="border-left:1px solid #ddd;padding:10px" class="row">
+                <h3>Scholarships in Same institute</h3>
                 <% @institute_scholorships.each do |scholarship| %>
                     <% name = scholarship.title.gsub( " ", "-" ) %>
                     <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
                         <div><%= scholarship.title %></div>
                     <% end %>
                 <% end %>
-                <div style="font-weight:700;padding-top: 12%; height: 30%; color:blue">Similar scholarships in Same education level</div>
-                <% @education_scholarships.each do |scholarship| %>
-                    <% name = scholarship.title.gsub( " ", "-" ) %>
-                    <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
-                        <div><%= scholarship.title %></div>
-                    <% end %>
-                <% end %>
-                <div style="font-weight:700; padding-top:12%; height:30%; color:blue">Similar scholarships in Same Subject</div>
+                <div style="padding:10px 0px;">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Idea Resorce Res -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2191799726154649"
+     data-ad-slot="7883903659"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+                <h3>Scholarships in Same Subject</h3>
                 <% @subject_scholarships.each do |scholarship| %>
                     <% name = scholarship.title.gsub( " ", "-" ) %>
                     <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>

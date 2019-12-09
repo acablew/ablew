@@ -2,9 +2,21 @@
   <div class="row">
     <%= link_to :controller=> 'home' do %>Home <% end %> <%= link_to :controller=>'postview',:action =>'index', :category =>@post.category.id do %> > <%= @post.category.name %> <% end %> > <%= @post.title %>
   </div>
-  <div class="row" style="color:blue;font-size: 20px;margin-top: 3%">
-    <%= @post.title %>
-  </div>
+  <h1> <%= @post.title %>  </h1>
+
+<div>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Idea Sch Links -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2191799726154649"
+     data-ad-slot="9320708051"
+     data-ad-format="link"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
   <div class="row" style="margin-top: 3%; font-size: 18px">
     <%= @post.content.html_safe %>
   </div>
@@ -28,10 +40,7 @@
           <span style="color:blue"><%= post.title %></span>
         <% end %>
       </div>
-      <div>
-        <%= post.content.html_safe %>
-      </div>
-      <% end %>
+            <% end %>
     <% end %>
   </div>
 </div>

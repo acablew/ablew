@@ -1,36 +1,21 @@
-<!--<div class="container">-->
-<!--  <div class="index-content">-->
-<!--    <div class="row">-->
-<!--      <div class="col-md-12">-->
-        <%# @scholarships.each do |scholarship| %>
-<!--          <div class="col-lg-12">-->
-
-<!--            <div class="card">-->
-<!--              <span style="float:right" class="label label-success"><%#= scholarship.country_name %></span>-->
-<!--              <h4 style="padding-top: 10px"><%#= scholarship.title %></h4>-->
-              <%#= link_to :controller => "scholarview", :action => "shown", :scholarship => scholarship.id, class: 'blue-button' do %>
-<!--                  <span style="margin-left:20px;margin-bottom: 10px" class="btn btn-success"> View </span>-->
-              <%# end %>
-<!--            </div>-->
-<!--          </div>-->
-        <%# end %>
-<!--      </div>-->
-<!--      <div class="col-md-1"></div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 <div class="container">
     <div class="row">
+ <div class="col-md-9 col-sm-10">
+
+                <h1>Jobs & Scholarships</h1>
+
       <% @scholarships.each do |scholarship| %>
-          <% name = scholarship.title.sub( " ", "-" ) %>
+             <% name = scholarship.title.gsub( " ", "-" ) %>
           <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
-          <div class="row" style="color:blue;font-size: 20px;margin-top: 1%">
-              <%= scholarship.title %>
-          </div>
+          <h2><%= scholarship.title %></h2>
           <% end %>
-          <div class="row" style="font-size: 18px">
-              <%= scholarship.content.html_safe %>
-          </div>
-      <% end %>
+        <% end %>
+</div>
+
+<div class="col-md-3 col-sm-2" >
+            <div style="background-color: #E0E0E0; padding:10px" class="row">
+                Sidebar
+            </div>
+        </div>
     </div>
 </div>

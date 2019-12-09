@@ -5,7 +5,7 @@
                 <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @country %>
             </div>
             <div class="row" style="font-size: 20px;margin-top: 20px;color:blue">
-                <span style="font-size: 20px"><%= @real_scholarships.count%></span> Scholarships Australia
+                <h1><%= @real_scholarships.count%> Scholarships in <%= @country %></h1>
             </div>
             <div class="row" style="margin-top: 25px">
             <% @real_scholarships.each do |scholarship| %>
@@ -13,7 +13,7 @@
                     <% name = scholarship.title.gsub( " ", "-" ) %>
                     <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
 
-                        <div style="color:blue"><%=   scholarship.title %></div>
+                        <h2><%=   scholarship.title %></h2>
                     <% end %>
                     <div style="margin-bottom:15px">
                         <div>
@@ -34,8 +34,7 @@
                               <% end %>
                             </div>
                         </div>
-                        <div>Description Description Description DescriptionDescription Description Description Description Description Description Description Description</div>
-                    </div>
+                       </div>
                 </div>
             <% end %>
             <%#= will_paginate(@real_scholarships, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>

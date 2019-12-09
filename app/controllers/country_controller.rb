@@ -1,7 +1,7 @@
 class CountryController < ApplicationController
     layout "homelayout"
     def index
-        @posts = Post.all
+        @posts = Post.all.order("created_at DESC")
         # @country = Subject.find(params[:country])
         @country = params[:country]
         params[:country]["Scholarships-in-"] = ""
@@ -13,7 +13,7 @@ class CountryController < ApplicationController
 
         i=0
         @real_scholarships = Array.new
-        @scholorships = Scholarship.all
+        @scholorships = Scholarship.all.order("created_at DESC")
         for scholorship in @scholorships
             for state in scholorship.states
                 if(state.name === params[:country])

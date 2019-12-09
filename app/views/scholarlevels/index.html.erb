@@ -5,14 +5,14 @@
         <%= link_to :controller=> 'home' do %>Home <% end %> > <%= @level.level %>
       </div>
       <div class="row" style="font-size: 20px;margin-top: 20px;color:blue">
-        <span style="font-size: 20px"><%= @scholarship_level.count%></span> Scholarships
+        <h1><%= @scholarship_level.count%> <%= @level.level %> Scholarships</h1>
       </div>
       <div class="row" style="margin-top: 25px">
         <% @scholarship_level.each do |scholarship| %>
           <div>
             <% name = scholarship.title.gsub( " ", "-" ) %>
             <%= link_to :controller => "singlescholarships", :action => "index", :id => name do %>
-              <div style="color:blue"><%=   scholarship.title %></div>
+              <h2><%=   scholarship.title %></h2>
             <% end %>
             <div style="margin-bottom:15px">
               <div>
@@ -24,8 +24,7 @@
                     <% end %>
                 </span>
               </div>
-              <div>Description Description Description DescriptionDescription Description Description Description Description Description Description Description</div>
-            </div>
+                          </div>
           </div>
         <% end %>
       </div>

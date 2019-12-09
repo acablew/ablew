@@ -1,8 +1,8 @@
 class ScholarlevelsController < ApplicationController
     layout "homelayout"
     def index
-        @posts = Post.all
-        @scholarships = Scholarship.all
+        @posts = Post.all.order("created_at DESC")
+        @scholarships = Scholarship.all.order("created_at DESC")
 
         if params[:level_id].to_s.split('-').count > 1
             params[:level_id] = params[:level_id].gsub("-", " ")
