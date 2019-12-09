@@ -7,6 +7,8 @@ class ScholarshipsController < ApplicationController
     end
 
     def show
+        set_meta_tags title:  @scholarship.title,
+                description: 'All the customer can apply the scholarships all over the world'
     end
 
     def new

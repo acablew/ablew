@@ -5,6 +5,8 @@ class PagesController < ApplicationController
         @pages = Page.all.order("created_at DESC")
     end
     def show
+        set_meta_tags title:  @page.title,
+                description: @page.content.present? ? @page.content : "All the customer can apply the scholarships all over the world"
     end
     def new
         @page = Page.new
