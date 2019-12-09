@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <% if params[:controller] == "posts" && params[:action] == "show" %>
-        <title><%= @post.title%></title>
-        <meta name="description" content="<%= @post.content.html_safe.gsub!(/(<[^>]*>)|\n|\t/s) {""}%>"/>
-    <% elsif params[:controller] == "scholarships" && params[:action] == "show" %>
-        <title><%= @scholarship.title%></title>
-        <meta name="description" content="All the customer can apply the scholarships all over the world"/>
-    <% elsif params[:controller] == "pages" && params[:action] == "show" %>
-        <title><%= @page.title%></title>
-        <meta name="description" content="All the customer can apply the scholarships all over the world"/>
+    <% if display_meta_tags.present? %>
+     <%= display_meta_tags %>
     <% else %>
         <title>Scholarships</title>
         <meta name="description" content="All the customer can apply the scholarships all over the world"/>
     <% end %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="robots" content="index, follow"/>

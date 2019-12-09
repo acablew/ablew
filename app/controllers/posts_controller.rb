@@ -12,6 +12,8 @@ class PostsController < ApplicationController
         end
     end
     def show
+        set_meta_tags title: @post.title,
+                description: @post.content.present? ? @post.content : "All the customer can apply the scholarships all over the world"
     end
     def new
         @post = Post.new
