@@ -62,5 +62,9 @@ SitemapGenerator::Sitemap.create do
     add "/country/Scholarships-in-#{state.name.gsub( " ", "-" )}", :lastmod => state.updated_at, :priority => 0.3, :changefreq => 'daily'
   end
 
+  Education.find_each do |education|
+    add "/scholarlevels/#{education.level.gsub( " ", "-" )}", :lastmod => education.updated_at, :priority => 0.3, :changefreq => 'daily'
+  end
+
 end
 # SitemapGenerator::Sitemap.ping_search_engines # Not needed if you use the rake tasks
