@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-     <title><%= content_for?(:html_title) ? yield(:html_title) : "Scholarships and Job Positions" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- <title>Scholarships</title> -->
+    <% if display_meta_tags.present? %>
+     <%= display_meta_tags %>
+    <% else %>
+        <title>Scholarships</title>
+    <% end %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     

@@ -1,6 +1,9 @@
 class SinglesubjectsController < ApplicationController
     layout "homelayout"
     def index
+      if params[:subject].present?
+        set_meta_tags title: params[:subject].gsub("-", " ")
+      end
         @posts = Post.all
         @scholarships1 = Scholarship.all
         i=0

@@ -1,6 +1,10 @@
 class CountryController < ApplicationController
     layout "homelayout"
     def index
+
+      if params[:country].present?
+        set_meta_tags title: params[:country].gsub("-", " ")
+      end
         @posts = Post.all.order("created_at DESC")
         # @country = Subject.find(params[:country])
         @country = params[:country]

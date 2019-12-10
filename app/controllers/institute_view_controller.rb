@@ -1,6 +1,9 @@
 class InstituteViewController < ApplicationController
     layout "homelayout"
     def index
+      if params[:institute_id].present?
+        set_meta_tags title: params[:institute_id].gsub("-", " ")
+      end
         @posts = Post.all
         # @country = Subject.find(params[:country])
         params[:institute_id]["Scholarships-at-"] = ""
