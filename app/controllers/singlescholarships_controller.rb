@@ -1,6 +1,9 @@
 class SinglescholarshipsController < ApplicationController
     layout "homelayout"
     def index
+      if params[:id].present?
+        set_meta_tags title: params[:id].gsub("-", " ")
+      end
         @posts = Post.all
         # @country = Subject.find(params[:country])
         if params[:id].to_s.split('-').count > 1

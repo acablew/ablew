@@ -1,6 +1,9 @@
 class ScholarlevelsController < ApplicationController
     layout "homelayout"
     def index
+      if params[:level_id].present?
+        set_meta_tags title: params[:level_id].gsub("-", " ")
+      end
         @posts = Post.all
         @scholarships = Scholarship.all
 

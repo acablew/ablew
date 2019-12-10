@@ -1,6 +1,9 @@
 class SinglepostsController < ApplicationController
     layout "homelayout"
     def index
+      if params[:post].present?
+        set_meta_tags title: params[:post].gsub("-", " ")
+      end
         @posts = Post.all
         # @post_id = params[:post]
         if params[:post].to_s.split('-').count > 1
