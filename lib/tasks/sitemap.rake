@@ -6,7 +6,7 @@ namespace :sitemap do
   task :generate => :environment do 
     include ApplicationHelper
 
-    SitemapGenerator::Sitemap.default_host = "http://scholars.ideabroad.com"
+    SitemapGenerator::Sitemap.default_host = "https://positions.ideabroad.com"
     SitemapGenerator::Sitemap.create do
 
   
@@ -25,19 +25,23 @@ namespace :sitemap do
 
   
       Post.all.each do |post|
-        add post_path(post), :lastmod => post.updated_at, :priority => 0.3, :changefreq => 'daily'
-      end
-
-      Category.all.each do |category|
-        add category_path(category), :lastmod => category.updated_at, :priority => 0.3, :changefreq => 'daily'
+        add "/singleposts/#{post.title.gsub( " ", "-" )}", :lastmod => post.updated_at, :priority => 0.3, :changefreq => 'daily'
       end
 
       Scholarship.all.each do |scholarship|
-        add scholarship_path(scholarship), :lastmod => scholarship.updated_at, :priority => 0.3, :changefreq => 'daily'
+        add "/singlescholarships/#{scholarship.title.gsub( " ", "-" )}", :lastmod => scholarship.updated_at, :priority => 0.3, :changefreq => 'daily'
       end
 
-      Page.all.each do |page|
-        add page_path(page), :lastmod => page.updated_at, :priority => 0.3, :changefreq => 'daily'
+      Subject.all.each do |subject|
+        add "/singlesubjects/#{subject.name.gsub( " ", "-" )}-scholarships", :lastmod => subject.updated_at, :priority => 0.3, :changefreq => 'daily'
+      end
+
+      State.all.each do |state|
+        add "/country/Scholarships-in-#{state.name.gsub( " ", "-" )}", :lastmod => state.updated_at, :priority => 0.3, :changefreq => 'daily'
+      end
+
+      Education.all.each do |education|
+        add "/scholarlevels/#{education.level.gsub( " ", "-" )}", :lastmod => education.updated_at, :priority => 0.3, :changefreq => 'daily'
       end
 
     end

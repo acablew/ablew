@@ -42,16 +42,8 @@ SitemapGenerator::Sitemap.create do
     add "/singleposts/#{post.title.gsub( " ", "-" )}", :lastmod => post.updated_at, :priority => 0.3, :changefreq => 'daily'
   end
 
-  Category.find_each do |category|
-    add category_path(category), :lastmod => category.updated_at, :priority => 0.3, :changefreq => 'daily'
-  end
-
   Scholarship.find_each do |scholarship|
     add "/singlescholarships/#{scholarship.title.gsub( " ", "-" )}", :lastmod => scholarship.updated_at, :priority => 0.3, :changefreq => 'daily'
-  end
-
-  Page.find_each do |page|
-    add page_path(page), :lastmod => page.updated_at, :priority => 0.3, :changefreq => 'daily'
   end
 
   Subject.find_each do |subject|
